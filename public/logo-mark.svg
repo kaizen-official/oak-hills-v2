@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" role="img" aria-label="Oak Hills">
+  <path fill="#1F2A44" d="M18 168 L70 128 L92 148 L92 168 Z"/>
+  <path fill="#B67C4F" d="M42 148 L70 128 L88 142 Z"/>
+  <path fill="#1F2A44" d="M62 168 L110 118 L158 168 Z"/>
+  <rect x="96" y="148" width="28" height="20" fill="#B67C4F"/>
+  <rect x="99" y="151" width="10" height="8" fill="#FAF7F2"/>
+  <rect x="111" y="151" width="10" height="8" fill="#FAF7F2"/>
+  <path fill="#1F2A44" d="M78 118 L102 92 L118 108 L118 140 L96 168 Z"/>
+  <path fill="#B67C4F" d="M108 28 L132 28 L132 168 L110 168 L110 118 Z"/>
+  <path fill="#1F2A44" d="M132 92 L158 78 L176 92 L176 150 L148 168 L132 150 Z"/>
+  <rect x="148" y="100" width="3.2" height="42" fill="#FAF7F2"/>
+  <rect x="154.5" y="100" width="3.2" height="42" fill="#FAF7F2"/>
+  <rect x="161" y="100" width="3.2" height="42" fill="#FAF7F2"/>
+  <rect x="167.5" y="100" width="3.2" height="42" fill="#FAF7F2"/>
+  <path fill="#B67C4F" d="M158 150 L196 128 L210 142 L210 168 L158 168 Z"/>
+  <rect x="8" y="168" width="204" height="6" fill="#1F2A44"/>
+</svg>
