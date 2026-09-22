@@ -1,70 +1,123 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { heroFacts } from "@/lib/content";
 import { project, site, telHref, whatsappHref } from "@/lib/site";
 import EnquiryModal from "@/components/enquiry/enquiry-modal";
-import { ease } from "@/components/motion/reveal";
-
-const rise = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.85, ease } },
-};
 
 export default function Hero() {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
+  const onVisit = () => setOpen(true);
 
   return (
-    <section className="mt-28 lg:mt-32 lg:grid lg:h-[calc(100svh-8rem)] lg:grid-cols-12">
-      <HeroPhoto reduce={reduce} />
-      <HeroCopy reduce={reduce} onVisit={() => setOpen(true)} />
+    <>
+      {reduce ? <HeroStatic onVisit={onVisit} /> : <HeroCinematic onVisit={onVisit} />}
       <EnquiryModal open={open} onClose={() => setOpen(false)} intent="visit" />
+    </>
+  );
+}
+
+function HeroCinematic({ onVisit }) {
+  const ref = useRef(null);
+  const motionValues = useHeroMotion(ref);
+
+  return (
+    <section ref={ref} className="relative h-[240svh]">
+      <div className="sticky top-0 h-svh overflow-hidden bg-oak-deep">
+        <HeroFilm />
+        <motion.div className="absolute inset-0 bg-oak-deep pointer-events-none" style={{ opacity: motionValues.veil }} />
+        <HeroOverlay onVisit={onVisit} intro={motionValues.intro} introY={motionValues.introY} detail={motionValues.detail} detailY={motionValues.detailY} />
+      </div>
     </section>
   );
 }
 
-function HeroPhoto({ reduce }) {
+function useHeroMotion(ref) {
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const veil = useTransform(scrollYProgress, [0, 0.22, 0.55], [0.12, 0.42, 0.58]);
+  const intro = useTransform(scrollYProgress, [0.1, 0.28], [0, 1]);
+  const introY = useTransform(scrollYProgress, [0.1, 0.28], [28, 0]);
+  const detail = useTransform(scrollYProgress, [0.42, 0.6], [0, 1]);
+  const detailY = useTransform(scrollYProgress, [0.42, 0.6], [22, 0]);
+  return { veil, intro, introY, detail, detailY };
+}
+
+function HeroStatic({ onVisit }) {
   return (
-    <div className="relative h-[44svh] min-h-64 overflow-hidden sm:h-[54svh] lg:col-span-7 lg:order-2 lg:h-auto lg:min-h-full">
-      <motion.img
-        src="/images/oak-hills-exterior.jpg"
-        alt="Oak Hills residences among trees in Sonipat"
-        className="absolute inset-0 h-full w-full object-cover object-[62%_center]"
-        initial={reduce ? false : { scale: 1.06 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.6, ease }}
-      />
+    <section className="relative h-svh overflow-hidden bg-oak-deep">
+      <HeroStill />
+      <div className="absolute inset-0 bg-oak-deep/55 pointer-events-none" />
+      <HeroOverlay onVisit={onVisit} />
+    </section>
+  );
+}
+
+function HeroOverlay({ onVisit, intro, introY, detail, detailY }) {
+  return (
+    <div className="absolute inset-0 z-10 flex items-end">
+      <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 pb-24 sm:pb-16">
+        <motion.div className="max-w-xl" style={intro ? { opacity: intro, y: introY } : undefined}>
+          <p className="text-xs tracking-widest uppercase text-bronze-light">{project.location}</p>
+          <h1 className="mt-4 text-5xl leading-[1.05] text-cream lg:text-6xl">
+            <Tagline />
+          </h1>
+        </motion.div>
+        <motion.div className="mt-6 max-w-xl" style={detail ? { opacity: detail, y: detailY } : undefined}>
+          <p className="max-w-md text-base leading-relaxed text-cream/85 sm:text-lg">
+            A HARERA-registered community of {project.units} three-bedroom homes, for families and buyers who prefer a finished count to a crowded skyline.
+          </p>
+          <HeroActions onVisit={onVisit} />
+          <HeroFacts />
+        </motion.div>
+      </div>
     </div>
   );
 }
 
-function HeroCopy({ reduce, onVisit }) {
+function HeroStill() {
   return (
-    <motion.div
-      className="flex items-center bg-cream px-5 pt-10 pb-24 sm:px-8 sm:py-12 lg:col-span-5 lg:order-1 lg:px-10 lg:py-8 xl:px-14"
-      initial={reduce ? "show" : "hidden"}
-      animate="show"
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.12 } } }}
-    >
-      <div className="flex w-full max-w-lg flex-col">
-        <motion.p variants={rise} className="order-1 text-xs tracking-widest uppercase text-bronze">
-          {project.location}
-        </motion.p>
-        <motion.h1 variants={rise} className="order-1 mt-4 text-5xl leading-[1.05] text-oak-deep lg:text-6xl">
-          <Tagline />
-        </motion.h1>
-        <motion.p variants={rise} className="order-3 mt-5 max-w-md text-base leading-relaxed text-stone sm:text-lg lg:order-2">
-          A HARERA-registered community of {project.units} three-bedroom homes, for families and buyers who prefer a finished count to a crowded skyline.
-        </motion.p>
-        <motion.div variants={rise} className="order-2 lg:order-3">
-          <HeroActions onVisit={onVisit} />
-        </motion.div>
-        <HeroFacts />
-      </div>
-    </motion.div>
+    <img
+      src="/images/oak-hills-exterior.jpg"
+      alt="Oak Hills residences among trees in Sonipat"
+      className="absolute inset-0 h-full w-full object-cover"
+    />
+  );
+}
+
+function HeroFilm() {
+  const ref = useRef(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    node.muted = true;
+    if (node.readyState >= 2) setReady(true);
+    const pending = node.play();
+    if (pending) pending.catch(() => {});
+  }, []);
+
+  return (
+    <>
+      <img src="/images/oak-hills-exterior.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <video
+        ref={ref}
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${ready ? "opacity-100" : "opacity-0"}`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label="Oak Hills residences: the arrival court, the garden, and a living room"
+        onCanPlay={() => setReady(true)}
+        onPlaying={() => setReady(true)}
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+    </>
   );
 }
 
@@ -90,14 +143,14 @@ function HeroActions({ onVisit }) {
         type="button"
         onClick={onVisit}
         title="Book a site visit"
-        className="bg-oak-deep px-6 py-3 text-cream hover:bg-oak"
+        className="bg-cream px-6 py-3 text-oak-deep hover:bg-white"
       >
         Book a site visit
       </button>
-      <Link href={whatsappHref()} target="_blank" rel="noopener noreferrer" title="WhatsApp Oak Hills" className="text-oak-deep underline decoration-bronze underline-offset-4 hover:text-bronze">
+      <Link href={whatsappHref()} target="_blank" rel="noopener noreferrer" title="WhatsApp Oak Hills" className="text-cream underline decoration-bronze underline-offset-4 hover:text-bronze-light">
         WhatsApp
       </Link>
-      <Link href={telHref} title="Call the sales desk" className="text-oak-deep underline decoration-bronze underline-offset-4 hover:text-bronze">
+      <Link href={telHref} title="Call the sales desk" className="text-cream underline decoration-bronze underline-offset-4 hover:text-bronze-light">
         Call
       </Link>
     </div>
@@ -106,18 +159,18 @@ function HeroActions({ onVisit }) {
 
 function HeroFacts() {
   return (
-    <motion.div variants={rise} className="order-4 mt-10 border-t border-oak/15 pt-6">
-      <dl className="grid grid-cols-2 gap-x-8 gap-y-5">
+    <div className="mt-10 border-t border-cream/20 pt-6">
+      <dl className="grid grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-4">
         {heroFacts.map((fact) => (
           <div key={fact.label}>
-            <dt className="text-xs tracking-widest uppercase text-bronze">{fact.label}</dt>
-            <dd className="mt-1 text-oak-deep">{fact.value}</dd>
+            <dt className="text-xs tracking-widest uppercase text-bronze-light">{fact.label}</dt>
+            <dd className="mt-1 text-cream">{fact.value}</dd>
           </div>
         ))}
       </dl>
-      <p className="mt-5 text-xs tracking-widest uppercase text-oak-deep">
-        HARERA <span className="text-bronze">·</span> {site.rera}
+      <p className="mt-5 text-xs tracking-widest uppercase text-cream">
+        HARERA <span className="text-bronze-light">·</span> {site.rera}
       </p>
-    </motion.div>
+    </div>
   );
 }
