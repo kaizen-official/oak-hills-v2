@@ -11,7 +11,7 @@ export default function GalleryPreview() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHead
           eyebrow="Gallery"
-          title="Rooms, lawns, and the evening elevation."
+          title="Project views and premium details."
         />
         <Stagger className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-3">
           {shots.map((shot) => (

@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { heroFacts } from "@/lib/content";
 import { project, site, telHref, whatsappHref } from "@/lib/site";
 import EnquiryModal from "@/components/enquiry/enquiry-modal";
@@ -29,7 +30,7 @@ function HeroCinematic({ onVisit }) {
       <div className="sticky top-0 h-svh overflow-hidden bg-oak-deep">
         <HeroFilm />
         <motion.div className="absolute inset-0 bg-oak-deep pointer-events-none" style={{ opacity: motionValues.veil }} />
-        <HeroOverlay onVisit={onVisit} intro={motionValues.intro} introY={motionValues.introY} detail={motionValues.detail} detailY={motionValues.detailY} />
+        <HeroOverlay onVisit={onVisit} detail={motionValues.detail} detailY={motionValues.detailY} />
       </div>
     </section>
   );
@@ -38,11 +39,9 @@ function HeroCinematic({ onVisit }) {
 function useHeroMotion(ref) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const veil = useTransform(scrollYProgress, [0, 0.22, 0.55], [0.12, 0.42, 0.58]);
-  const intro = useTransform(scrollYProgress, [0.1, 0.28], [0, 1]);
-  const introY = useTransform(scrollYProgress, [0.1, 0.28], [28, 0]);
   const detail = useTransform(scrollYProgress, [0.42, 0.6], [0, 1]);
   const detailY = useTransform(scrollYProgress, [0.42, 0.6], [22, 0]);
-  return { veil, intro, introY, detail, detailY };
+  return { veil, detail, detailY };
 }
 
 function HeroStatic({ onVisit }) {
@@ -55,19 +54,33 @@ function HeroStatic({ onVisit }) {
   );
 }
 
-function HeroOverlay({ onVisit, intro, introY, detail, detailY }) {
+function HeroOverlay({ onVisit, detail, detailY }) {
+  const reduce = useReducedMotion();
+
   return (
     <div className="absolute inset-0 z-10 flex items-end">
       <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 pb-24 sm:pb-16">
-        <motion.div className="max-w-xl" style={intro ? { opacity: intro, y: introY } : undefined}>
-          <p className="text-xs tracking-widest uppercase text-bronze-light">{project.location}</p>
+        <motion.div
+          className="max-w-2xl"
+          initial={reduce ? false : { opacity: 0, y: 28, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.p
+            className="text-xs tracking-widest uppercase text-bronze-light"
+            initial={reduce ? false : { opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            {project.location}
+          </motion.p>
           <h1 className="mt-4 text-5xl leading-[1.05] text-cream lg:text-6xl">
-            <Tagline />
+            <Tagline reduce={reduce} />
           </h1>
         </motion.div>
         <motion.div className="mt-6 max-w-xl" style={detail ? { opacity: detail, y: detailY } : undefined}>
           <p className="max-w-md text-base leading-relaxed text-cream/85 sm:text-lg">
-            A HARERA-registered community of {project.units} three-bedroom homes, for families and buyers who prefer a finished count to a crowded skyline.
+            Agamya Prime brings thoughtfully planned 3 BHK residences and brochure-listed conveniences to Jindal Global City.
           </p>
           <HeroActions onVisit={onVisit} />
           <HeroFacts />
@@ -79,60 +92,79 @@ function HeroOverlay({ onVisit, intro, introY, detail, detailY }) {
 
 function HeroStill() {
   return (
-    <img
-      src="/images/oak-hills-exterior.jpg"
-      alt="Oak Hills residences among trees in Sonipat"
+    <Image
+      src="/images/agamya-prime/exterior-night.jpg"
+      alt="Agamya Prime front elevation in Jindal Global City"
+      fill
+      priority
+      sizes="100vw"
       className="absolute inset-0 h-full w-full object-cover"
     />
   );
 }
 
+const walkthrough = [
+  {
+    src: "/images/agamya-prime/exterior-night.jpg",
+    alt: "Agamya Prime front elevation in Jindal Global City",
+  },
+  {
+    src: "/images/agamya-prime/balcony-lounge.jpg",
+    alt: "Agamya Prime wraparound balcony lounge",
+  },
+  {
+    src: "/images/agamya-prime/balcony-view.jpg",
+    alt: "View from an Agamya Prime balcony",
+  },
+];
+
 function HeroFilm() {
-  const ref = useRef(null);
-  const [ready, setReady] = useState(false);
+  const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    node.muted = true;
-    if (node.readyState >= 2) setReady(true);
-    const pending = node.play();
-    if (pending) pending.catch(() => {});
-  }, []);
+    if (reduce) return undefined;
+    const timer = window.setInterval(() => {
+      setIndex((current) => (current + 1) % walkthrough.length);
+    }, 3600);
+    return () => window.clearInterval(timer);
+  }, [reduce]);
 
   return (
-    <>
-      <img src="/images/oak-hills-exterior.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <video
-        ref={ref}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${ready ? "opacity-100" : "opacity-0"}`}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-label="Oak Hills residences: the arrival court, the garden, and a living room"
-        onCanPlay={() => setReady(true)}
-        onPlaying={() => setReady(true)}
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
-    </>
+    <div className="absolute inset-0" role="img" aria-label={walkthrough[index].alt}>
+      <AnimatePresence initial={false} mode="sync">
+        <motion.img
+          key={walkthrough[index].src}
+          src={walkthrough[index].src}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          initial={reduce ? false : { opacity: 0, scale: 1.07 }}
+          animate={{ opacity: 1, scale: reduce ? 1 : 1.015 }}
+          exit={{ opacity: 0 }}
+          transition={{ opacity: { duration: 0.7 }, scale: { duration: 4.8, ease: "linear" } }}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-linear-to-r from-oak-deep/45 via-transparent to-oak-deep/10" />
+    </div>
   );
 }
 
-function Tagline() {
-  const parts = site.tagline.split(". ");
-  if (parts.length < 2) return site.tagline;
-  const words = parts[0].split(" ");
+function Tagline({ reduce }) {
+  const lines = ["A landmark", "in the making."];
   return (
-    <>
-      {words[0]}
-      <br />
-      {words.slice(1).join(" ")}.
-      <br />
-      {parts[1]}
-    </>
+    <span className="block overflow-hidden">
+      {lines.map((line, lineIndex) => (
+        <motion.span
+          key={line}
+          className="block"
+          initial={reduce ? false : { y: "110%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.24 + lineIndex * 0.13, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {line}
+        </motion.span>
+      ))}
+    </span>
   );
 }
 
@@ -169,7 +201,7 @@ function HeroFacts() {
         ))}
       </dl>
       <p className="mt-5 text-xs tracking-widest uppercase text-cream">
-        HARERA <span className="text-bronze-light">·</span> {site.rera}
+        RERA No. <span className="text-bronze-light">·</span> {site.rera}
       </p>
     </div>
   );

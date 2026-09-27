@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-cream/15 pt-6 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-sm text-cream/60">
           <p>© {year} {site.legalName}. All rights reserved.</p>
-          <p>All project information is subject to HARERA filings and may be updated as required.</p>
+          <p>Project information is subject to RERA filings and may be updated as required.</p>
         </div>
       </div>
       <Link
@@ -52,7 +52,7 @@ function BrandBlock() {
         <Logo light stacked />
       </div>
       <p className="text-cream/75 leading-relaxed mb-5">
-        Fifty-six 3 BHK residences in Rathdhana, Sector 35, Sonipat. A small gate, a registered number, and a sales desk that picks up.
+        Agamya Prime brings premium 3 BHK residences to Sector 35, Jindal Global City, Sonipat.
       </p>
       <ReraLine light />
     </div>

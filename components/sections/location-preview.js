@@ -12,12 +12,12 @@ export default function LocationPreview() {
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           <SectionHead
             eyebrow="Location / connectivity"
-            title="Rathdhana, Sector 35 — Sonipat’s Delhi-facing road."
-            text="NH 334B, the Kundli rim, and the education belt are the arguments. The rest is a map we would rather walk with you."
+            title="Jindal Global City, Sector 35, Sonipat."
+            text="Close to leading universities, NH 334B, NH 44, and the wider NCR road network."
           />
           <Frame
-            src="/images/oak-hills-exterior.jpg"
-            alt="City roads at the Delhi–Sonipat edge"
+            src="/images/agamya-prime/exterior-night.jpg"
+            alt="Agamya Prime in Jindal Global City, Sonipat"
             className="w-full h-80"
           />
         </div>
@@ -29,8 +29,8 @@ export default function LocationPreview() {
             </StaggerItem>
           ))}
         </Stagger>
-        <Link href="/location" title="Read the full location note" className="inline-block mt-10 border-b border-oak-deep text-oak-deep pb-1">
-          Read the full location note
+        <Link href="/location" title="Explore the location" className="inline-block mt-10 border-b border-oak-deep text-oak-deep pb-1">
+          Explore the location
         </Link>
       </div>
     </section>

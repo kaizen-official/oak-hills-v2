@@ -14,9 +14,9 @@ import Enquiry from "@/components/sections/form";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: "Oak Hills | 3 BHK Residences in Sonipat",
+  title: "Agamya Prime | 3 BHK Residences in Jindal Global City",
   description:
-    "Fifty-six HARERA-registered 3 BHK homes in Rathdhana, Sector 35, Sonipat. Book a site visit, request pricing, or WhatsApp the Oak Hills sales desk. RERA HRERA-PKL-SNP-901-2026.",
+    "Explore Agamya Prime, premium 3 BHK residences in Sector 35, Jindal Global City, Sonipat. Book a site visit or contact the Oak Hills sales desk.",
   alternates: { canonical: site.url },
 };
 

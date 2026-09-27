@@ -7,7 +7,7 @@ export default function ReraLine({ compact = false, light = false }) {
 
   return (
     <p className={`${size} tracking-widest uppercase ${tone}`}>
-      RERA Approved <span className={mark}>·</span> {site.rera}
+      RERA No. <span className={mark}>·</span> {site.rera}
     </p>
   );
 }

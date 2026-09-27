@@ -4,7 +4,7 @@ import AmenitiesPage from "./amenitiesClient";
 export const metadata = {
   title: "Amenities",
   description:
-    "Lawn, children's court, community hall, walking loop, and a secure gate — amenities scaled for 56 homes at Oak Hills, Sonipat.",
+    "Explore Agamya Prime amenities including a coffee shop, mini theatre, dine-in restaurant, indoor games, toddlers' club, wellness spa, gymnasium, yoga centre, steam, and sauna.",
   alternates: { canonical: `${site.url}/amenities` },
 };
 

@@ -10,9 +10,9 @@ export default function GalleryPage() {
     <BgLayout>
       <PageHero
         title="Gallery"
-        kicker="Rooms and ground"
-        image="/images/residence-interior.jpg"
-        imageAlt="Living room at Oak Hills"
+        kicker="Project views and premium detailing"
+        image="/images/agamya-prime/exterior-night.jpg"
+        imageAlt="Agamya Prime front elevation"
       />
       <section className="py-24">
         <Stagger className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -12,8 +12,8 @@ export default function UpdatesPage() {
       <PageHero
         title="Construction updates"
         kicker="A ledger, when there is something to show"
-        image="/images/garden-courtyard.jpg"
-        imageAlt="Courtyard at Oak Hills"
+        image="/images/agamya-prime/exterior-night.jpg"
+        imageAlt="Agamya Prime signature elevation"
       />
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

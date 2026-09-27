@@ -18,7 +18,7 @@ const sections = [
   },
   {
     title: "4. Sharing",
-    body: "We may share details with HARERA or other authorities if the law requires it, and with lenders or channel partners only when you ask us to introduce you.",
+    body: "We may share details with RERA or other authorities if the law requires it, and with lenders or channel partners only when you ask us to introduce you.",
   },
   {
     title: "5. Retention",
@@ -26,7 +26,7 @@ const sections = [
   },
   {
     title: "6. Your choices",
-    body: "Write to the sales desk or call +91 90530 77702 to correct a record or ask us to stop follow-up calls. We will still keep what the law requires us to keep.",
+    body: "Write to the sales desk or call +91 7400 760064 to correct a record or ask us to stop follow-up calls. We will still keep what the law requires us to keep.",
   },
 ];
 

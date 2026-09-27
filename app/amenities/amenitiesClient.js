@@ -11,15 +11,15 @@ export default function AmenitiesPage() {
     <BgLayout>
       <PageHero
         title="Amenities"
-        kicker="Ground the 56 homes actually share"
-        image="/images/garden-courtyard.jpg"
-        imageAlt="Garden and walking path at Oak Hills"
+        kicker="As listed in the current project brochure"
+        image="/images/agamya-prime/gymnasium.jpg"
+        imageAlt="Gymnasium at Agamya Prime"
       />
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHead
-            title="A court, a lawn, a hall. Then you go home."
-            text="We did not borrow a five-acre club list from a different plot. These are the rooms and greens a 56-home gate can keep well."
+            title="World-class amenities, curated for daily life."
+            text="From dining and indoor recreation to wellness and family spaces, every amenity below is taken directly from the latest brochure."
           />
           <Stagger className="mt-14 grid md:grid-cols-2 gap-10">
             {amenities.map((item) => (
@@ -34,7 +34,7 @@ export default function AmenitiesPage() {
       </section>
       <section className="py-20 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl text-oak-deep">Also on the plan</h2>
+          <h2 className="text-3xl text-oak-deep">Also included in the brochure</h2>
           <ul className="mt-8 grid sm:grid-cols-2 gap-4">
             {amenityExtras.map((line) => (
               <li key={line} className="border-t border-oak/15 pt-4 text-stone">{line}</li>

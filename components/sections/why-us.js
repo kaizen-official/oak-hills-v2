@@ -8,8 +8,8 @@ export default function WhyUs() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHead
           eyebrow="Why Oak Hills"
-          title="A smaller gate, a clearer paper trail."
-          text="Lodha-scale theatre is not the brief. The work is a quiet, registered address that a family can finish describing before the tea arrives."
+          title="Considered living, connected by design."
+          text="A premium address shaped around space, everyday convenience, and the way families actually live."
         />
         <Stagger className="mt-14 grid md:grid-cols-2 gap-10">
           {whyPoints.map((point) => (

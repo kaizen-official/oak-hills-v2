@@ -13,8 +13,8 @@ export default function AboutPage() {
       <PageHero
         title="About Oak Hills"
         kicker="The house behind the gate"
-        image="/images/facade-detail.jpg"
-        imageAlt="Oak Hills residences at dusk"
+        image="/images/agamya-prime/exterior-night.jpg"
+        imageAlt="Agamya Prime signature elevation"
       />
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">

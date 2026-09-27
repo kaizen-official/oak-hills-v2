@@ -11,8 +11,8 @@ export default function AmenitiesPreview() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHead
           eyebrow="Amenities"
-          title="Daily tools for fifty-six families, not a resort catalogue."
-          text="Lawn, court, hall, and a gate. Built to be used in June, not photographed in March."
+          title="Wellness, leisure, dining, and everyday ease."
+          text="Every amenity shown here is listed in the current Agamya Prime brochure."
         />
         <Stagger className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {preview.map((item) => (

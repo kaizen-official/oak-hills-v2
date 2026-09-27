@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 export const metadata = {
   title: "About Oak Hills Infra",
   description:
-    "Oak Hills Infra is building 56 three-bedroom residences in Rathdhana, Sector 35, Sonipat. HARERA registered HRERA-PKL-SNP-901-2026.",
+    "Oak Hills Infra is developing Agamya Prime, premium 3 BHK residences in Sector 35, Jindal Global City, Sonipat.",
   alternates: { canonical: `${site.url}/about` },
 };
 

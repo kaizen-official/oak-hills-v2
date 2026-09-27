@@ -4,7 +4,7 @@ import LocationPage from "./locationClient";
 export const metadata = {
   title: "Location & Connectivity",
   description:
-    "Oak Hills is in Village Rathdhana, Sector 35, Sonipat, on the NH 334B belt facing Kundli and the Delhi edge of NCR.",
+    "Agamya Prime is in Sector 35, Jindal Global City, Sonipat, close to O.P. Jindal Global University, NH 334B, NH 44, and Rajiv Gandhi Education City.",
   alternates: { canonical: `${site.url}/location` },
 };
 

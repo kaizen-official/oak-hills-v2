@@ -4,7 +4,7 @@ import GalleryPage from "./galleryClient";
 export const metadata = {
   title: "Gallery",
   description:
-    "Photographs of rooms, lawns, and elevations for Oak Hills, the 56-home 3 BHK community in Sonipat.",
+    "View Agamya Prime project imagery, premium finishes, balcony views, recreation spaces, and the signature elevation.",
   alternates: { canonical: `${site.url}/gallery` },
 };
 

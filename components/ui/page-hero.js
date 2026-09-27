@@ -9,7 +9,7 @@ export default function PageHero({ title, kicker, image, imageAlt }) {
   const reduce = useReducedMotion();
 
   return (
-    <section className="mt-28 lg:mt-32">
+    <section className="mt-18 lg:mt-22">
       <div className="lux-frame overflow-hidden h-72 md:h-112">
         <motion.img
           src={image}

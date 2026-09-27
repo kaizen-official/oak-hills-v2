@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { nav, site, telHref } from "@/lib/site";
 import EnquiryModal from "@/components/enquiry/enquiry-modal";
-import ReraLine from "@/components/ui/rera-line";
 import Logo from "@/components/ui/logo";
 
 export default function Header() {
@@ -22,11 +21,6 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
-      <div className="bg-oak-deep text-cream">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-center">
-          <ReraLine compact light />
-        </div>
-      </div>
       <div className="bg-paper/95 border-b border-oak/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 lg:h-22 flex items-center justify-between">
           <Logo />
