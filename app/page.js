@@ -13,9 +13,9 @@ import Enquiry from "@/components/sections/form";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: "Agamya Prime | 3 BHK Residences in JGC",
+  title: "Agamya Prime | 3 BHK Residences in Jindal Global City",
   description:
-    "Explore Agamya Prime, premium 3 BHK residences in Sector 35, JGC (Jindal Global City), Sonipat. Book a site visit or contact the Oak Hills sales desk.",
+    "Explore Agamya Prime, premium 3 BHK residences in Sector 35, Jindal Global City, Sonipat. Book a site visit or contact the Oak Hills sales desk.",
   alternates: { canonical: site.url },
 };
 

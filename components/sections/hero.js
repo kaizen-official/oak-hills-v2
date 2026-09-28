@@ -1,105 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { heroFacts } from "@/lib/content";
-import { project, site, telHref, whatsappHref } from "@/lib/site";
+import { site, telHref, whatsappHref } from "@/lib/site";
 import EnquiryModal from "@/components/enquiry/enquiry-modal";
 
 export default function Hero() {
   const [open, setOpen] = useState(false);
-  const reduce = useReducedMotion();
   const onVisit = () => setOpen(true);
 
   return (
     <>
-      {reduce ? <HeroStatic onVisit={onVisit} /> : <HeroCinematic onVisit={onVisit} />}
+      <HeroStatic onVisit={onVisit} />
       <EnquiryModal open={open} onClose={() => setOpen(false)} intent="visit" />
     </>
   );
 }
 
-function HeroCinematic({ onVisit }) {
-  const ref = useRef(null);
-  const motionValues = useHeroMotion(ref);
-
-  return (
-    <section ref={ref} className="relative h-[240svh]">
-      <div className="sticky top-0 h-svh overflow-hidden bg-oak-deep">
-        <HeroFilm />
-        <motion.div className="absolute inset-0 bg-oak-deep pointer-events-none" style={{ opacity: motionValues.veil }} />
-        <HeroOverlay onVisit={onVisit} detail={motionValues.detail} detailY={motionValues.detailY} />
-      </div>
-    </section>
-  );
-}
-
-function useHeroMotion(ref) {
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const veil = useTransform(scrollYProgress, [0, 0.22, 0.55], [0.12, 0.42, 0.58]);
-  const detail = useTransform(scrollYProgress, [0.42, 0.6], [0, 1]);
-  const detailY = useTransform(scrollYProgress, [0.42, 0.6], [22, 0]);
-  return { veil, detail, detailY };
-}
-
 function HeroStatic({ onVisit }) {
   return (
-    <section className="relative h-svh overflow-hidden bg-oak-deep">
-      <HeroStill />
-      <div className="absolute inset-0 bg-oak-deep/55 pointer-events-none" />
+    <section className="relative mt-18 min-h-[calc(100svh-4.5rem)] overflow-hidden bg-oak-deep lg:mt-22 lg:min-h-[calc(100svh-5.5rem)]">
+      <HeroFilm />
+      <div className="pointer-events-none absolute inset-0 bg-oak-deep/20" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-oak-deep/25 to-oak-deep/95" />
       <HeroOverlay onVisit={onVisit} />
     </section>
   );
 }
 
-function HeroOverlay({ onVisit, detail, detailY }) {
-  const reduce = useReducedMotion();
-
+function HeroOverlay({ onVisit }) {
   return (
-    <div className="absolute inset-0 z-10 flex items-end">
+    <div className="relative z-10 flex min-h-[calc(100svh-4.5rem)] items-end lg:min-h-[calc(100svh-5.5rem)]">
       <div className="w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 pb-24 sm:pb-16">
-        <motion.div
-          className="max-w-2xl"
-          initial={reduce ? false : { opacity: 0, y: 28, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <motion.p
-            className="text-xs tracking-widest uppercase text-bronze-light"
-            initial={reduce ? false : { opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-          >
-            {project.location}
-          </motion.p>
-          <h1 className="mt-4 text-5xl leading-[1.05] text-cream lg:text-6xl">
-            <Tagline reduce={reduce} />
+        <div className="max-w-2xl">
+          <h1 className="text-4xl leading-[1.05] text-cream sm:text-5xl lg:text-6xl">
+            <Tagline />
           </h1>
-        </motion.div>
-        <motion.div className="mt-6 max-w-xl" style={detail ? { opacity: detail, y: detailY } : undefined}>
+        </div>
+        <div className="mt-4 max-w-xl sm:mt-6">
           <p className="max-w-md text-base leading-relaxed text-cream/85 sm:text-lg">
-            Agamya Prime brings thoughtfully planned 3 BHK residences and considered everyday conveniences to JGC.
+            Agamya Prime brings thoughtfully planned 3 BHK residences and considered everyday conveniences to Jindal Global City.
           </p>
           <HeroActions onVisit={onVisit} />
           <HeroFacts />
-        </motion.div>
+        </div>
       </div>
     </div>
-  );
-}
-
-function HeroStill() {
-  return (
-    <Image
-      src="/images/agamya-prime/exterior-night.jpg"
-      alt="Agamya Prime front elevation in Jindal Global City"
-      fill
-      priority
-      sizes="100vw"
-      className="absolute inset-0 h-full w-full object-cover md:object-contain"
-    />
   );
 }
 
@@ -137,7 +85,7 @@ function HeroFilm() {
           key={walkthrough[index].src}
           src={walkthrough[index].src}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover md:object-contain"
+          className="absolute inset-0 h-full w-full object-contain object-top"
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -149,20 +97,14 @@ function HeroFilm() {
   );
 }
 
-function Tagline({ reduce }) {
+function Tagline() {
   const lines = ["A landmark", "in the making."];
   return (
     <span className="block pb-[0.12em]">
-      {lines.map((line, lineIndex) => (
-        <motion.span
-          key={line}
-          className="block pb-[0.04em]"
-          initial={reduce ? false : { y: 24, opacity: 0, filter: "blur(5px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.24 + lineIndex * 0.13, ease: [0.22, 1, 0.36, 1] }}
-        >
+      {lines.map((line) => (
+        <span key={line} className="block pb-[0.04em]">
           {line}
-        </motion.span>
+        </span>
       ))}
     </span>
   );
@@ -191,7 +133,7 @@ function HeroActions({ onVisit }) {
 
 function HeroFacts() {
   return (
-    <div className="mt-10 border-t border-cream/20 pt-6">
+    <div className="mt-6 border-t border-cream/20 pt-4 sm:mt-10 sm:pt-6">
       <dl className="grid grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-4">
         {heroFacts.map((fact) => (
           <div key={fact.label}>

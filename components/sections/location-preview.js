@@ -12,7 +12,7 @@ export default function LocationPreview() {
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           <SectionHead
             eyebrow="Location / connectivity"
-            title="Sector 35, JGC (Jindal Global City), Sonipat."
+            title="Sector 35, Jindal Global City, Sonipat."
             text="Close to leading universities, NH 334B, NH 44, and the wider NCR road network."
           />
           <Frame

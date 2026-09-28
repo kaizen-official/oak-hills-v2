@@ -52,7 +52,7 @@ function BrandBlock() {
         <Logo light stacked />
       </div>
       <p className="text-cream/75 leading-relaxed mb-5">
-        Agamya Prime brings premium 3 BHK residences to Sector 35, JGC (Jindal Global City), Sonipat.
+        Agamya Prime brings premium 3 BHK residences to Sector 35, Jindal Global City, Sonipat.
       </p>
       <ReraLine light />
     </div>

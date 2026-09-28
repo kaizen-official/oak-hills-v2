@@ -83,7 +83,7 @@ function Facts({ openForm }) {
         <div>
           <SectionHead
             eyebrow="The inventory"
-            title="Agamya Prime at JGC (Jindal Global City)."
+            title="Agamya Prime at Jindal Global City."
             text="Premium 3 BHK residences in Sector 35, Sonipat. Construction is ongoing, with thoughtfully planned homes and generous private balconies."
           />
           <div className="mt-8 flex flex-wrap gap-3">

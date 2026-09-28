@@ -31,12 +31,12 @@ export const metadata = {
     template: "%s | Oak Hills",
   },
   description:
-    "Agamya Prime offers premium 3 BHK residences in Sector 35, JGC (Jindal Global City), Sonipat. Book a site visit, request pricing, or call the Oak Hills sales desk.",
+    "Agamya Prime offers premium 3 BHK residences in Sector 35, Jindal Global City, Sonipat. Book a site visit, request pricing, or call the Oak Hills sales desk.",
   keywords: [
     "Oak Hills",
     "Oak Hills Sonipat",
     "3 BHK Sonipat",
-    "JGC Jindal Global City Sector 35",
+    "Jindal Global City Sector 35",
     "RERA Sonipat",
     "HRERA-PKL-SNP-901-2026",
     "residential property Sonipat",
@@ -53,13 +53,13 @@ export const metadata = {
     siteName: site.name,
     title: "Agamya Prime | 3 BHK Residences in Sonipat",
     description:
-      "Premium 3 BHK residences in Sector 35, JGC (Jindal Global City), Sonipat.",
+      "Premium 3 BHK residences in Sector 35, Jindal Global City, Sonipat.",
     images: [{ url: "/images/agamya-prime/exterior-night.jpg", width: 1200, height: 630, alt: "Agamya Prime" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Agamya Prime | 3 BHK Residences in Sonipat",
-    description: "Premium 3 BHK residences in JGC (Jindal Global City). Book a site visit.",
+    description: "Premium 3 BHK residences in Jindal Global City. Book a site visit.",
     images: ["/images/agamya-prime/exterior-night.jpg"],
   },
   robots: {
@@ -81,7 +81,7 @@ export default function RootLayout({ children }) {
     telephone: site.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Sector 35, JGC (Jindal Global City)",
+      streetAddress: "Sector 35, Jindal Global City",
       addressLocality: "Sonipat",
       addressRegion: "Haryana",
       addressCountry: "IN",
