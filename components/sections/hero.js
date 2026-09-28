@@ -85,7 +85,7 @@ function HeroFilm() {
           key={walkthrough[index].src}
           src={walkthrough[index].src}
           alt=""
-          className="absolute inset-0 h-full w-full object-contain object-top"
+          className="absolute inset-0 h-full w-full object-cover object-top"
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
