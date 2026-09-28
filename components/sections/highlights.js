@@ -13,7 +13,7 @@ export default function Highlights() {
         <Stagger className="mt-14 grid md:grid-cols-2 gap-8">
           {highlights.map((item) => (
             <StaggerItem key={item.title}>
-              <article className="group relative h-96 overflow-hidden bg-oak-deep">
+              <article className="group relative aspect-video overflow-hidden bg-oak-deep">
                 <Frame src={item.image} alt={item.title} className="h-full w-full transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-oak-deep via-oak-deep/85 to-transparent px-6 pb-6 pt-24 text-cream">
                   <h3 className="text-3xl">{item.title}</h3>

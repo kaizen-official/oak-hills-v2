@@ -6,7 +6,6 @@ import Stats from "@/components/sections/stats";
 import LocationPreview from "@/components/sections/location-preview";
 import Highlights from "@/components/sections/highlights";
 import AmenitiesPreview from "@/components/sections/amenities-preview";
-import GalleryPreview from "@/components/sections/gallery-preview";
 import UpdatesPreview from "@/components/sections/updates-preview";
 import Testimonials from "@/components/sections/testimonials";
 import Faqs from "@/components/sections/faqs";
@@ -14,9 +13,9 @@ import Enquiry from "@/components/sections/form";
 import { site } from "@/lib/site";
 
 export const metadata = {
-  title: "Agamya Prime | 3 BHK Residences in Jindal Global City",
+  title: "Agamya Prime | 3 BHK Residences in JGC",
   description:
-    "Explore Agamya Prime, premium 3 BHK residences in Sector 35, Jindal Global City, Sonipat. Book a site visit or contact the Oak Hills sales desk.",
+    "Explore Agamya Prime, premium 3 BHK residences in Sector 35, JGC (Jindal Global City), Sonipat. Book a site visit or contact the Oak Hills sales desk.",
   alternates: { canonical: site.url },
 };
 
@@ -30,7 +29,6 @@ export default function Home() {
       <LocationPreview />
       <Highlights />
       <AmenitiesPreview />
-      <GalleryPreview />
       <UpdatesPreview />
       <Testimonials />
       <Faqs />

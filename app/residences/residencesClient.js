@@ -34,8 +34,8 @@ export default function ResidencesPage() {
       <PageHero
         title={project.name}
         kicker="Ongoing · A project by Oak Hills Infra"
-        image="/images/agamya-prime/exterior-night.jpg"
-        imageAlt="Agamya Prime 3 BHK residences"
+        image="/images/agamya-prime/generated/living-dining.jpg"
+        imageAlt="Premium living and dining space at Agamya Prime"
       />
       <Facts openForm={openForm} />
       <section className="py-24 bg-cream">
@@ -43,17 +43,17 @@ export default function ResidencesPage() {
           <SectionHead
             eyebrow="Inside the home"
             title="Thoughtful layouts. Grand balconies. Room to exhale."
-            text="The current brochure presents Type A and Type B 3 BHK layouts with generous balconies and carefully planned interiors."
+            text="Type A and Type B 3 BHK layouts pair generous balconies with carefully planned interiors."
           />
           <Stagger className="mt-12 grid md:grid-cols-3 gap-6">
             <StaggerItem>
-              <Frame src="/images/agamya-prime/balcony-lounge.jpg" alt="Balcony lounge at Agamya Prime" className="h-64 w-full" />
+              <Frame src="/images/agamya-prime/generated/grand-balcony.jpg" alt="Grand balcony at Agamya Prime" className="aspect-video w-full" />
             </StaggerItem>
             <StaggerItem>
-              <Frame src="/images/agamya-prime/balcony-view.jpg" alt="Open balcony view at Agamya Prime" className="h-64 w-full" />
+              <Frame src="/images/agamya-prime/generated/kitchen.jpg" alt="Contemporary kitchen at Agamya Prime" className="aspect-video w-full" />
             </StaggerItem>
             <StaggerItem>
-              <Frame src="/images/agamya-prime/elevator-lobby.jpg" alt="Premium elevator lobby at Agamya Prime" className="h-64 w-full" />
+              <Frame src="/images/agamya-prime/generated/master-bedroom.jpg" alt="Premium bedroom at Agamya Prime" className="aspect-video w-full" />
             </StaggerItem>
           </Stagger>
         </div>
@@ -83,8 +83,8 @@ function Facts({ openForm }) {
         <div>
           <SectionHead
             eyebrow="The inventory"
-            title="Agamya Prime at Jindal Global City."
-            text="Premium 3 BHK residences in Sector 35, Sonipat. Construction is ongoing, with project imagery and details aligned to the current brochure."
+            title="Agamya Prime at JGC (Jindal Global City)."
+            text="Premium 3 BHK residences in Sector 35, Sonipat. Construction is ongoing, with thoughtfully planned homes and generous private balconies."
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <button type="button" onClick={() => openForm("pricing")} title="Request pricing" className="bg-oak-deep text-cream px-6 py-3">

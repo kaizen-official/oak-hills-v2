@@ -13,8 +13,8 @@ export default function AboutPage() {
       <PageHero
         title="About Oak Hills"
         kicker="The house behind the gate"
-        image="/images/agamya-prime/exterior-night.jpg"
-        imageAlt="Agamya Prime signature elevation"
+        image="/images/agamya-prime/generated/coffee-shop.jpg"
+        imageAlt="Premium social space at Oak Hills"
       />
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
@@ -38,7 +38,7 @@ export default function AboutPage() {
       </section>
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHead eyebrow="How we work" title="Four rules that keep the brochure honest." />
+          <SectionHead eyebrow="How we work" title="Four principles that guide every decision." />
           <div className="mt-12 grid md:grid-cols-2 gap-10">
             {values.map((item) => (
               <article key={item.title} className="border-t border-oak/15 pt-6">

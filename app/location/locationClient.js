@@ -13,15 +13,15 @@ export default function LocationPage() {
     <BgLayout>
       <PageHero
         title="Location & connectivity"
-        kicker="Sector 35, Jindal Global City, Sonipat"
-        image="/images/agamya-prime/exterior-night.jpg"
-        imageAlt="Agamya Prime in Jindal Global City, Sonipat"
+        kicker="Sector 35, JGC (Jindal Global City), Sonipat"
+        image="/images/agamya-prime/generated/jgc-connectivity.jpg"
+        imageAlt="Aerial view of a connected, green district in Sonipat"
       />
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHead
             title="Connected to education, healthcare, and the wider NCR."
-            text={`${site.addressLines.join(", ")}. Travel times below are those stated in the current project brochure.`}
+            text={`${site.addressLines.join(", ")}. Travel times are approximate and may vary with traffic conditions.`}
           />
           <div className="mt-14 grid md:grid-cols-2 gap-10">
             {connections.map((item) => (
@@ -36,7 +36,7 @@ export default function LocationPage() {
       <section className="pb-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <iframe
-            title="Map of Jindal Global City, Sector 35, Sonipat"
+            title="Map of Sector 35, JGC (Jindal Global City), Sonipat"
             src={mapSrc}
             className="w-full h-100 border-0"
             loading="lazy"

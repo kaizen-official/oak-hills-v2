@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import SectionHead from "@/components/ui/section-head";
 import { Frame, Reveal } from "@/components/motion/reveal";
 import { project } from "@/lib/site";
@@ -11,19 +10,17 @@ export default function Ongoing() {
         <Frame
           src="/images/agamya-prime/exterior-night.jpg"
           alt="Agamya Prime, the ongoing Oak Hills project in Sector 35 Sonipat"
-          className="w-full h-125"
+          className="aspect-video w-full"
         />
         <Reveal>
-          <Image src="/AP transparent.png" alt="Agamya Prime" width={1024} height={1024} className="mb-6 h-24 w-24 object-contain" />
           <SectionHead
             eyebrow="Ongoing project"
             title={project.name}
-            text="Premium 3 BHK residences with grand balconies, everyday conveniences, and a connected Jindal Global City address."
+            text="Premium 3 BHK residences with grand balconies, everyday conveniences, and a connected JGC address."
           />
           <dl className="mt-8 grid grid-cols-2 gap-6 text-oak-deep">
             <Item label="Type" value={project.type} />
-            <Item label="Plan" value={project.configuration} />
-            <Item label="Location" value="Jindal Global City" />
+            <Item label="Location" value="Sector 35, JGC (Jindal Global City), Sonipat" />
             <Item label="Status" value={project.status} />
           </dl>
           <p className="mt-6 text-stone leading-relaxed">

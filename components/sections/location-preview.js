@@ -12,13 +12,13 @@ export default function LocationPreview() {
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           <SectionHead
             eyebrow="Location / connectivity"
-            title="Jindal Global City, Sector 35, Sonipat."
+            title="Sector 35, JGC (Jindal Global City), Sonipat."
             text="Close to leading universities, NH 334B, NH 44, and the wider NCR road network."
           />
           <Frame
-            src="/images/agamya-prime/exterior-night.jpg"
-            alt="Agamya Prime in Jindal Global City, Sonipat"
-            className="w-full h-80"
+            src="/images/agamya-prime/generated/jgc-connectivity.jpg"
+            alt="Aerial view of a connected, green urban district in Sonipat"
+            className="aspect-video w-full"
           />
         </div>
         <Stagger className="mt-12 grid md:grid-cols-2 gap-8">

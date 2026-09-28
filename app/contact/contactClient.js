@@ -17,8 +17,8 @@ export default function ContactPage() {
       <PageHero
         title="Contact"
         kicker="The sales desk"
-        image="/images/agamya-prime/balcony-lounge.jpg"
-        imageAlt="Agamya Prime balcony lounge"
+        image="/images/agamya-prime/generated/elevator-lobby.jpg"
+        imageAlt="Premium arrival lobby at Agamya Prime"
       />
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14">

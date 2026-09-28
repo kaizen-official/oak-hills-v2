@@ -80,7 +80,7 @@ function HeroOverlay({ onVisit, detail, detailY }) {
         </motion.div>
         <motion.div className="mt-6 max-w-xl" style={detail ? { opacity: detail, y: detailY } : undefined}>
           <p className="max-w-md text-base leading-relaxed text-cream/85 sm:text-lg">
-            Agamya Prime brings thoughtfully planned 3 BHK residences and brochure-listed conveniences to Jindal Global City.
+            Agamya Prime brings thoughtfully planned 3 BHK residences and considered everyday conveniences to JGC.
           </p>
           <HeroActions onVisit={onVisit} />
           <HeroFacts />
@@ -98,7 +98,7 @@ function HeroStill() {
       fill
       priority
       sizes="100vw"
-      className="absolute inset-0 h-full w-full object-cover"
+      className="absolute inset-0 h-full w-full object-cover md:object-contain"
     />
   );
 }
@@ -109,12 +109,12 @@ const walkthrough = [
     alt: "Agamya Prime front elevation in Jindal Global City",
   },
   {
-    src: "/images/agamya-prime/balcony-lounge.jpg",
+    src: "/images/agamya-prime/generated/grand-balcony.jpg",
     alt: "Agamya Prime wraparound balcony lounge",
   },
   {
-    src: "/images/agamya-prime/balcony-view.jpg",
-    alt: "View from an Agamya Prime balcony",
+    src: "/images/agamya-prime/generated/living-dining.jpg",
+    alt: "Premium living and dining room at Agamya Prime",
   },
 ];
 
@@ -137,11 +137,11 @@ function HeroFilm() {
           key={walkthrough[index].src}
           src={walkthrough[index].src}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          initial={reduce ? false : { opacity: 0, scale: 1.07 }}
-          animate={{ opacity: 1, scale: reduce ? 1 : 1.015 }}
+          className="absolute inset-0 h-full w-full object-cover md:object-contain"
+          initial={reduce ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ opacity: { duration: 0.7 }, scale: { duration: 4.8, ease: "linear" } }}
+          transition={{ opacity: { duration: 0.7 } }}
         />
       </AnimatePresence>
       <div className="absolute inset-0 bg-linear-to-r from-oak-deep/45 via-transparent to-oak-deep/10" />
@@ -152,13 +152,13 @@ function HeroFilm() {
 function Tagline({ reduce }) {
   const lines = ["A landmark", "in the making."];
   return (
-    <span className="block overflow-hidden">
+    <span className="block pb-[0.12em]">
       {lines.map((line, lineIndex) => (
         <motion.span
           key={line}
-          className="block"
-          initial={reduce ? false : { y: "110%", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          className="block pb-[0.04em]"
+          initial={reduce ? false : { y: 24, opacity: 0, filter: "blur(5px)" }}
+          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.9, delay: 0.24 + lineIndex * 0.13, ease: [0.22, 1, 0.36, 1] }}
         >
           {line}

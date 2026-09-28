@@ -12,12 +12,12 @@ export default function AmenitiesPreview() {
         <SectionHead
           eyebrow="Amenities"
           title="Wellness, leisure, dining, and everyday ease."
-          text="Every amenity shown here is listed in the current Agamya Prime brochure."
+          text="Spaces for fitness, recreation, dining, wellbeing, and time together."
         />
         <Stagger className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {preview.map((item) => (
             <StaggerItem key={item.title}>
-              <Frame src={item.image} alt={item.title} className="w-full h-56" />
+              <Frame src={item.image} alt={item.title} className="aspect-video w-full" />
               <h3 className="mt-4 text-xl text-oak-deep">{item.title}</h3>
               <p className="mt-2 text-stone leading-relaxed">{item.text}</p>
             </StaggerItem>
